@@ -9,6 +9,31 @@
     });
   }
 
+  // ---- Theme switch (light / dark) ----
+  const root = document.documentElement;
+  const themeSwitch = document.querySelector(".theme-switch");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const applyTheme = (theme) => {
+    root.setAttribute("data-theme", theme);
+    if (themeSwitch) themeSwitch.setAttribute("aria-checked", String(theme === "dark"));
+    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0b0c0e" : "#f4f4f2");
+  };
+  applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  if (themeSwitch) {
+    themeSwitch.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
+  // Until someone picks a theme, keep following the system setting.
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  systemDark.addEventListener?.("change", (e) => {
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (err) {}
+    if (!saved) applyTheme(e.matches ? "dark" : "light");
+  });
+
   // ---- Local time in San Diego (Pacific Time, whatever the visitor's zone) ----
   const clock = document.querySelector(".local-time");
   if (clock && window.Intl) {
