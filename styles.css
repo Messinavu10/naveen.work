@@ -60,10 +60,10 @@ h1, h2, h3, p { margin: 0; }
 
 .layout {
   display: grid;
-  grid-template-columns: 350px minmax(0, 1fr);
+  grid-template-columns: clamp(320px, 22vw, 400px) minmax(0, 1fr);
   gap: var(--gap);
   align-items: start;
-  max-width: 1600px;
+  max-width: 1920px;
   margin: 0 auto;
   padding: var(--gap);
 }
@@ -75,8 +75,8 @@ h1, h2, h3, p { margin: 0; }
   top: var(--gap);
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 2 * var(--gap));
-  height: calc(100dvh - 2 * var(--gap));
+  max-height: calc(100vh - 2 * var(--gap));
+  max-height: calc(100dvh - 2 * var(--gap));
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--card);
@@ -87,9 +87,9 @@ h1, h2, h3, p { margin: 0; }
 
 .card-photo {
   position: relative;
-  flex: 1 1 380px;
+  flex: 0 1 auto;
+  aspect-ratio: 4 / 5;
   min-height: 180px;
-  max-height: 560px;
   background: linear-gradient(160deg, #2a2d34, var(--card));
 }
 .card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -466,8 +466,8 @@ button.project { padding: 0; border: 0; background: none; font: inherit; color: 
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
-  .card { position: relative; top: 0; height: auto; overflow: visible; }
-  .card-photo { flex: 0 0 auto; height: 360px; max-height: none; }
+  .card { position: relative; top: 0; max-height: none; overflow: visible; }
+  .card-photo { flex: 0 0 auto; aspect-ratio: auto; height: 360px; }
   .circuit { max-width: 420px; }
   .cert-list { grid-template-columns: 1fr; }
 }
