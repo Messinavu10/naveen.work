@@ -9,6 +9,19 @@
     });
   }
 
+  // ---- Local time in San Diego (Pacific Time, whatever the visitor's zone) ----
+  const clock = document.querySelector(".local-time");
+  if (clock && window.Intl) {
+    const fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit" });
+    const out = clock.querySelector("time");
+    const tick = () => { out.textContent = fmt.format(new Date()); };
+    tick();
+    setInterval(tick, 20000);
+    clock.hidden = false;
+    const fallback = document.querySelector(".based-fallback");
+    if (fallback) fallback.remove();
+  }
+
   // ---- Scroll spy ----
   const links = document.querySelectorAll("[data-section]");
   const sections = [...new Set([...links].map((a) => a.dataset.section))]

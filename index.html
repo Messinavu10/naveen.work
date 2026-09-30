@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
   <a class="skip" href="#about">Skip to content</a>
@@ -75,8 +75,10 @@
 
     <main class="panel">
       <div class="topbar">
-        <span class="pill">naveen.work</span>
-        <p class="based">Based in<br><strong>San Diego, California</strong></p>
+        <a class="pill pill-link" href="resume.pdf">Resume
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        </a>
+        <p class="based"><span class="local-time" hidden>Local time <time></time></span><span class="based-fallback">Based in</span><br><strong>San Diego, California</strong></p>
       </div>
 
       <!-- T1 -->
@@ -305,6 +307,6 @@
     </button>
   </dialog>
 
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>
