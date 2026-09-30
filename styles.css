@@ -324,7 +324,9 @@ button.project { padding: 0; border: 0; background: none; font: inherit; color: 
 
 /* education */
 .schools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.school { display: flex; flex-direction: column; gap: 8px; padding: 30px; border-radius: var(--radius-md); background: var(--chip); }
+.school { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 20px; row-gap: 6px; align-content: start; padding: 30px; border-radius: var(--radius-md); background: var(--chip); }
+.school > :not(.school-logo) { grid-column: 2; }
+.school-logo { grid-row: 1 / span 3; align-self: start; width: 64px; height: 64px; border-radius: 50%; background: #ffffff; object-fit: contain; box-shadow: 0 0 0 1px var(--hairline); }
 .school-year { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
 .school h3 { font-family: var(--display); font-size: 28px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; }
 .school-degree { color: var(--text); }
@@ -338,6 +340,7 @@ button.project { padding: 0; border: 0; background: none; font: inherit; color: 
 }
 .cert-list a:hover { border-color: var(--ink); color: var(--ink); }
 .issuer { font-size: 13px; font-weight: 500; color: var(--muted); }
+.cert-logo { width: 28px; height: 28px; margin-bottom: 8px; object-fit: contain; }
 
 /* contact */
 .contact { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 120px var(--pad) 110px; text-align: center; }
@@ -471,7 +474,7 @@ button.project { padding: 0; border: 0; background: none; font: inherit; color: 
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
-  .card { position: relative; top: 0; max-height: none; overflow: visible; }
+  .card { position: relative; top: 0; max-height: none; overflow: hidden; }
   .card-photo { flex: 0 0 auto; aspect-ratio: auto; height: 360px; }
   .circuit { max-width: 420px; }
   .cert-list { grid-template-columns: 1fr; }
