@@ -19,6 +19,13 @@
     if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0b0c0e" : "#f4f4f2");
   };
   applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  // Until someone uses the switch, follow the system setting if it changes (for example, at sunset).
+  const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+  systemDark?.addEventListener?.("change", (e) => {
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (err) {}
+    if (!saved) applyTheme(e.matches ? "dark" : "light");
+  });
   if (themeSwitch) {
     themeSwitch.addEventListener("click", () => {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";

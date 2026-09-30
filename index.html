@@ -15,7 +15,8 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem("theme"); } catch (e) {}
-      if (t !== "dark") t = "light";
+      // Saved choice first, then the visitor's system setting; anything else is light.
+      if (t !== "light" && t !== "dark") t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", t);
     })();
   </script>
@@ -337,6 +338,6 @@
     </button>
   </dialog>
 
-  <script src="script.js?v=18"></script>
+  <script src="script.js?v=19"></script>
 </body>
 </html>
