@@ -26,13 +26,6 @@
       try { localStorage.setItem("theme", next); } catch (e) {}
     });
   }
-  // Until someone picks a theme, keep following the system setting.
-  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
-  systemDark.addEventListener?.("change", (e) => {
-    let saved = null;
-    try { saved = localStorage.getItem("theme"); } catch (err) {}
-    if (!saved) applyTheme(e.matches ? "dark" : "light");
-  });
 
   // ---- Local time in San Diego (Pacific Time, whatever the visitor's zone) ----
   const clock = document.querySelector(".local-time");

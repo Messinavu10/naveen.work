@@ -46,7 +46,7 @@
   color-scheme: light;
 }
 
-/* Dark theme: set on <html data-theme="dark"> by the toggle, or from the system setting on first visit */
+/* Dark theme: set on <html data-theme="dark"> when a visitor turns it on (light is the default) */
 :root[data-theme="dark"] {
   --ground: #0b0c0e;
   --paper: #141518;
