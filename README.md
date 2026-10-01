@@ -19,17 +19,3 @@ Personal site for Naveen Kumar Rajesh. Plain HTML, CSS, and a little JavaScript,
 - After changing `styles.css` or `script.js`, bump the `?v=` number where `index.html` loads them, so browsers pick up the new files instead of a cached copy.
 
 Preview locally with `python3 -m http.server` and visit http://localhost:8000.
-
-## Hosting
-
-GitHub Pages serves the `main` branch. The `CNAME` file points it at `naveen.work`.
-
-DNS records at GoDaddy:
-
-| Type  | Name | Value                  |
-|-------|------|------------------------|
-| A     | @    | 185.199.108.153        |
-| A     | @    | 185.199.109.153        |
-| A     | @    | 185.199.110.153        |
-| A     | @    | 185.199.111.153        |
-| CNAME | www  | messinavu10.github.io  |
